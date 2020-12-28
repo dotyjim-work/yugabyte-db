@@ -111,3 +111,16 @@ $ git commit
 Create a [pull request in the YugabyteDB docs repo](https://github.com/yugabyte/docs/pulls) once you are ready to submit your changes.
 
 We will review your changes, add any feedback and once everything looks good merge your changes into the mainline.
+
+
+## Running the server inside a container.
+
+( TODO: why does hugo need to parse git at root of repo ? )
+
+```
+$ cd ../
+
+$ podman build -v `pwd`:/app ./docs/ --tag yb-docs
+$ podman run -v $(pwd):/app -p 1313:1313 --rm yb-docs
+$ xdg-open localhost:1313
+```
